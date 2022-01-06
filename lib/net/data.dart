@@ -1,0 +1,109 @@
+import 'package:epicshop/net/offer_product_filter.dart';
+import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:woocommerce/models/customer.dart';
+import 'package:woocommerce/models/products.dart';
+import 'package:woocommerce/woocommerce.dart';
+
+class Data extends ChangeNotifier {
+  SharedPreferences? _pref;
+  List<WooCartItem> _pCartItem = [];
+  List<WooProduct> _pPublicProductList = [];
+  List<WooProduct> _pAllProductList = [];
+  List<WooProductCategory> _pProductCategory = [];
+  //List<WooProductDates> _pProductDates = [];
+  List<WooProduct> _pFilteredProducts = [];
+  List<String> _pHPCategoryProduct = [];
+  WooCustomer _pCustomer = WooCustomer();
+  Billing _pBilling = Billing();
+  Shipping _pShopping = Shipping();
+  WooCart? _pMyCart;
+  bool _pIsLoggedIn = false;
+  bool _pIsCustomerInfoFull = false;
+
+  SharedPreferences get pref => _pref!;
+
+  setPref(List<String> value) async {
+    _pref = await SharedPreferences.getInstance();
+    _pref!.setStringList('stringList', ['orage', 'apple', 'banana']);
+    notifyListeners();
+  }
+
+  ///. AllProductList ///////////////////////////////////////////////////
+  List<WooProduct> get pAllProductList => _pAllProductList;
+  void setAllProductList(List<WooProduct> value) {
+    _pAllProductList = value;
+    for (int i = 0; i < _pAllProductList.length; i++) {
+      if (_pAllProductList[i].status == 'publish') {
+        setPublicProductList(_pAllProductList[i]);
+        // _pPublicProductList.add(_pAllProductList[i]);
+      }
+    }
+    notifyListeners();
+  }
+
+  ///. PublicProductList ///////////////////////////////////////////////////
+  List<WooProduct> get pPublicProductList => _pPublicProductList;
+  void setPublicProductList(WooProduct value) {
+    _pPublicProductList.add(value);
+    notifyListeners();
+  }
+
+  ///. ProductCategory ///////////////////////////////////////////////////
+  List<WooProductCategory> get pProductCategory => _pProductCategory;
+  void setProductCategory(List<WooProductCategory> value) {
+    _pProductCategory = value;
+    notifyListeners();
+  }
+
+  ///. HPCategoryProduct ///////////////////////////////////////////////////
+  List<String> get pHPCategoryProduct => _pHPCategoryProduct;
+  void setHPCategoryProduct(String value) {
+    _pHPCategoryProduct.add(value);
+    notifyListeners();
+  }
+
+  ///. CartItem ///////////////////////////////////////////////////
+  List<WooCartItem> get cartItem => _pCartItem;
+  void setCartItem(WooCartItem value) {
+    _pCartItem.add(value);
+    notifyListeners();
+  }
+
+  void setCartItems(List<WooCartItem> value) {
+    _pCartItem = value;
+    notifyListeners();
+  }
+
+  void setPrice(int index, String newPrice) {
+    cartItem[index].price = newPrice;
+    notifyListeners();
+  }
+
+  void removeCartItem(WooCartItem value) {
+    _pCartItem.remove(value);
+    notifyListeners();
+  }
+
+  ///. ProductDates ////////////////////////////////////////////////
+  /*List<WooProductDates> get pProductDates => _pProductDates;
+  void setProductDates(List<WooProductDates> onlineProduct) {
+    _pProductDates = onlineProduct;
+    notifyListeners();
+  }*/
+
+  ///. FilteredProducts ///////////////////////////////////////////
+  List<WooProduct> get pFilteredProducts => _pFilteredProducts;
+  void setFilteredProducts(WooProduct value) {
+    _pFilteredProducts.add(value);
+    notifyListeners();
+  }
+
+  ///.////////////////////////////////////
+  int _counter = 0;
+  int get counter => _counter;
+  void addCount() {
+    _counter++;
+    notifyListeners();
+  }
+}
