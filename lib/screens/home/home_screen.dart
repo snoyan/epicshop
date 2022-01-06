@@ -112,7 +112,8 @@ class _HomeScreenState extends State<HomeScreen> {
             //top header banner in very start
             bannerSlider(banner1()),
             CategoryBox(),
-            Brain.fiteredProducts.length > 0 ? OfferSlider() : Container(),
+            //Brain.fiteredProducts.length > 0 ? OfferSlider() : Container(),
+            OfferSlider(),
             SizedBox(
               height: 5,
             ),

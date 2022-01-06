@@ -5,8 +5,8 @@ import 'brain.dart';
 
 /// site address and consumer key
 const String baseUrl = "https://betashop.epicsite.ir/";
-const String consumerKey = "ck_d2efa11e0f02e7d2df99f0f3c873a9f0088cc03f";
-const String consumerSecret = "cs_9e08e8fa83e007e0689882853a9933fcce4fdcbb";
+const String consumerKey = "ck_3356b75c3ce2f782db29626e21a937d238697480";
+const String consumerSecret = "cs_420828b202001309cb92b1cc07f81ba501cb5a4e";
 
 class NetworkHelper {
   WooCommerce wooCommerce = WooCommerce(

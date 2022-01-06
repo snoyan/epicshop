@@ -150,7 +150,7 @@ packages:
       name: flutter_svg
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.22.0"
+    version: "1.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -251,14 +251,14 @@ packages:
       name: path_drawing
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.1+1"
+    version: "1.0.0"
   path_parsing:
     dependency: transitive
     description:
       name: path_parsing
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.1"
+    version: "1.0.0"
   path_provider_linux:
     dependency: transitive
     description:
@@ -549,7 +549,7 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "192ee33edcf4ea24bf405272c2a64a9d6195a837"
+      resolved-ref: "74b342f0780d34d9726755c69bb1b3ce7e73b194"
       url: "git://github.com/snoyan/woocommerce.git"
     source: git
     version: "1.0.0"

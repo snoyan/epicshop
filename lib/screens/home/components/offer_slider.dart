@@ -43,10 +43,13 @@ class _OfferSliderState extends State<OfferSlider> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  ...List.generate(Brain.fiteredProducts.length, (index) {
-                    return OfferCard(
-                      product: Brain.fiteredProducts[index],
-                    );
+                  ...List.generate(Brain.publicProductList.length, (index) {
+                    if (Brain.publicProductList[index].dateOnSaleTo != null) {
+                      return OfferCard(
+                        product: Brain.publicProductList[index],
+                      );
+                    } else
+                      return Container();
                   })
                 ],
               ),
