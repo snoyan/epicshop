@@ -35,6 +35,7 @@ class _OfferSliderState extends State<OfferSlider> {
             ],
           ),
         ),
+        //
         Expanded(
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,

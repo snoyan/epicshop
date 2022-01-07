@@ -46,7 +46,7 @@ class _OfferCardState extends State<OfferCard> {
     //EndTime();
     offPercent();
   }
-
+//
   @override
   Widget build(BuildContext context) {
     return Container(

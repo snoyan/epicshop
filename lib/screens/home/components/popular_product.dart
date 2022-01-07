@@ -84,6 +84,7 @@ class _PopularProductsState extends State<PopularProducts> {
             ],
           ),
         ),
+        //
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

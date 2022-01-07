@@ -41,7 +41,7 @@ class _ProductCardState extends State<ProductCard> {
     //EndTime();
     offPercent();
   }
-
+//
   @override
   Widget build(BuildContext context) {
     return Container(
