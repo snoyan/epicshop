@@ -51,103 +51,97 @@ class _OfferCardState extends State<OfferCard> {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(left: 8),
-        height: MediaQuery.of(context).size.height * 0.35,
+        height: MediaQuery.of(context).size.height * 0.385,
         width: 150,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(15)),
-        child: GestureDetector(
-          onTap: () {
-            //print("############################################$endTime");
-            Navigator.pushNamed(
-              context,
-              ProductDetail.routeName,
-              arguments: ProductArguments(widget.product, off),
-            );
-          },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              AspectRatio(
-                aspectRatio: 1.2,
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    // color: kSecondaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(15),
-                        topLeft: Radius.circular(15)),
-                  ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GestureDetector(
+            onTap: () {
+              //print("############################################$endTime");
+              Navigator.pushNamed(
+                context,
+                ProductDetail.routeName,
+                arguments: ProductArguments(widget.product, off),
+              );
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                AspectRatio(
+                  aspectRatio: 1.2,
                   child: Hero(
                     tag: widget.product.id.toString(),
                     child: displayMedia(),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              //PRODUCT IMAGE
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Text(
-                  widget.product.name != '' ? widget.product.name! : 'بدون نام',
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(0.6),
-                  ),
-                  maxLines: 2,
-                ),
-              ),
-              //PRODUCT TITLE
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, bottom: 4),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    (off == 0)
-                        ? SizedBox(
-                            height: 20,
-                          )
-                        : regularBox(),
-                    SizedBox(
-                      width: 5,
+                const SizedBox(height: 10),
+                //PRODUCT IMAGE
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Text(
+                    widget.product.name != '' ? widget.product.name! : 'بدون نام',
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.6),
                     ),
-                    percentBox(off)
+                    maxLines: 2,
+                  ),
+                ),
+                //PRODUCT TITLE
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, bottom: 4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      (off == 0)
+                          ? SizedBox(
+                              height: 20,
+                            )
+                          : regularBox(),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      percentBox(off)
+                    ],
+                  ),
+                ),
+                //PRODUCT PRICE
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      (off == 0)
+                          ? " ${kCheckPrice(widget.product.regularPrice)}ریال"
+                          : " ${kCheckPrice(widget.product.salePrice)}ریال",
+                      //"ریال ${widget.product.regularPrice}",
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(.7),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w300),
+                      maxLines: 1,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                //product offer timer
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    OfferCounterTimer(
+                        endTime: DateTime.parse(widget.product.dateOnSaleTo!)
+                            .millisecondsSinceEpoch),
                   ],
                 ),
-              ),
-              //PRODUCT PRICE
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    (off == 0)
-                        ? " ${kCheckPrice(widget.product.regularPrice)}ریال"
-                        : " ${kCheckPrice(widget.product.salePrice)}ریال",
-                    //"ریال ${widget.product.regularPrice}",
-                    style: TextStyle(
-                        color: Colors.black.withOpacity(.7),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w300),
-                    maxLines: 1,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              //product offer timer
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  OfferCounterTimer(
-                      endTime: DateTime.parse(widget.product.dateOnSaleTo!)
-                          .millisecondsSinceEpoch),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
         ));
   }

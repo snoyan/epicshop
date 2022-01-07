@@ -11,7 +11,7 @@ class ProductCard extends StatefulWidget {
   ProductCard({
     required this.product,
   });
-  WooProduct product;
+  final WooProduct product;
 
   @override
   _ProductCardState createState() => _ProductCardState();
@@ -37,11 +37,12 @@ class _ProductCardState extends State<ProductCard> {
 
   @override
   void initState() {
-    //super.initState();
+    super.initState();
     //EndTime();
     offPercent();
+
   }
-//
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,63 +60,39 @@ class _ProductCardState extends State<ProductCard> {
               arguments: ProductArguments(widget.product, off),
             );
           },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              AspectRatio(
-                aspectRatio: 1.2,
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    // color: kSecondaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(15),
-                        topLeft: Radius.circular(15)),
-                  ),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                AspectRatio(
+                  aspectRatio: 1.2,
                   child: Hero(
-                    tag: widget.product.id.toString(),
-                    child: displayMedia(),
+                      tag: widget.product.id.toString(),
+                      child: displayMedia(),
                   ),
                 ),
-              ),
-              // const SizedBox(height: 1),
-              //PRODUCT IMAGE
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Text(
+                Divider(height: 1,),
+                //PRODUCT IMAGE
+                Text(
                   widget.product.name != '' ? widget.product.name! : 'بدون نام',
                   style: TextStyle(
                     color: Colors.black.withOpacity(0.6),
                   ),
                   maxLines: 2,
                 ),
-              ),
-              //PRODUCT TITLE
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, bottom: 4),
-                child: Row(
+                //PRODUCT TITLE
+                Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    (off == 0)
-                        ? SizedBox(
-                            height: 20,
-                          )
-                        : regularBox(),
-                    SizedBox(
-                      width: 5,
-                    ),
+                    (off == 0) ? SizedBox(height: 20,) : regularBox(),
+                    SizedBox(width: 5,),
                     percentBox(off)
                   ],
                 ),
-              ),
-              //PRODUCT PRICE
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Align(
+                //PRODUCT PRICE
+                Align(
                   alignment: Alignment.bottomLeft,
                   child: Text(
                     (off == 0)
@@ -128,8 +105,8 @@ class _ProductCardState extends State<ProductCard> {
                     maxLines: 1,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ));
   }
