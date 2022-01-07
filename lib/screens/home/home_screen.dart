@@ -80,6 +80,9 @@ class _HomeScreenState extends State<HomeScreen> {
         });
   }
 
+  get() async{
+    NetworkHelper().getCustomer();
+  }
   @override
   Widget build(BuildContext context) {
     /// The SystemChrome.setPreferredOrientations is for Lock up Rotation Screen .
@@ -88,7 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
       DeviceOrientation.portraitDown,
     ]);
     //takes all orders list when home page is building
+    get();
     getOrders();
+
     //<---
     return WillPopScope(
       onWillPop: () async {

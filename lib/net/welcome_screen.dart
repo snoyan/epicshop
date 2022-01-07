@@ -3,6 +3,8 @@ import 'package:epicshop/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:epicshop/net/brain.dart';
 import 'package:provider/src/provider.dart';
+import 'package:woocommerce/models/product_category.dart';
+import 'package:woocommerce/models/products.dart';
 import '../constants.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'data.dart';
@@ -27,6 +29,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   bool showSpinner = false;
   bool isActive = false;
   bool isTrying = false;
+  List<WooProductCategory> category =[];
+  List<WooProductCategory> category2 =[];
 
   /// this following function check " Is user device connected to network or not?"
   checkConnection() async {
@@ -37,16 +41,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         setState(() {
           isTrying = false;
         });
-        NetworkHelper().getCustomer();
         // context.read<Data>().setCartItems(await NetworkHelper().wooCommerce.getMyCartItems());
         Brain.allProductList = await NetworkHelper().wooCommerce.getProducts();
         for (int i = 0; i < Brain.allProductList.length; i++) {
+          category = Brain.allProductList[i].categories;
+          for(int c = 0 ;c < category.length ; c++){
+            if (category2.every((item) => item.id != category[c].id)) {
+              category2.add(category[c]);
+            }
+
+
+          }
           if (Brain.allProductList[i].status == 'publish') {
             Brain.publicProductList.add(Brain.allProductList[i]);
           }
         }
-        Brain.productCategory =
-            await NetworkHelper().wooCommerce.getProductCategories();
+
+        Brain.productCategory =  category2;
+        // Brain.productCategory =
+        //     await NetworkHelper().wooCommerce.getProductCategories();
         // Brain.productDates = await getOfferProducts();
         //await getProductDates();
         HPCategoryProduct();
@@ -62,12 +75,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     }
   }
 
+
   @override
   void initState() {
     super.initState();
     checkConnection();
   }
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
