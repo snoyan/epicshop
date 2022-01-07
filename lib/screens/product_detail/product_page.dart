@@ -67,13 +67,7 @@ class _ProductPageState extends State<ProductPage> {
               (MediaQuery.of(context).size.height / 1.48),
           children: List.generate(
             product.length,
-            (index) => Container(
-              margin: EdgeInsets.only(
-                top: 8,
-              ),
-              //padding: EdgeInsets.only(left: 10),
-              child: ProductCard(product: product[index]),
-            ),
+            (index) => ProductCard(product: product[index]),
           ),
         ),
       ),

@@ -45,70 +45,74 @@ class _ProductCardState extends State<ProductCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
         margin: EdgeInsets.only(left: 10),
         height: MediaQuery.of(context).size.height * 0.34,
         width: 165,
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(15)),
+              color: Colors.white, borderRadius: BorderRadius.circular(15)),
         child: GestureDetector(
-          onTap: () {
-            //print("############################################$endTime");
-            Navigator.pushNamed(
-              context,
-              ProductDetail.routeName,
-              arguments: ProductArguments(widget.product, off),
-            );
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                AspectRatio(
-                  aspectRatio: 1.2,
-                  child: Hero(
-                      tag: widget.product.id.toString(),
-                      child: displayMedia(),
+            onTap: () {
+              //print("############################################$endTime");
+              Navigator.pushNamed(
+                context,
+                ProductDetail.routeName,
+                arguments: ProductArguments(widget.product, off),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  AspectRatio(
+                    aspectRatio: 1.2,
+                    child: Hero(
+                        tag: widget.product.id.toString(),
+                        child: displayMedia(),
+                    ),
                   ),
-                ),
-                Divider(height: 1,),
-                //PRODUCT IMAGE
-                Text(
-                  widget.product.name != '' ? widget.product.name! : 'بدون نام',
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(0.6),
-                  ),
-                  maxLines: 2,
-                ),
-                //PRODUCT TITLE
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    (off == 0) ? SizedBox(height: 20,) : regularBox(),
-                    SizedBox(width: 5,),
-                    percentBox(off)
-                  ],
-                ),
-                //PRODUCT PRICE
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Text(
-                    (off == 0)
-                        ? " ${kCheckPrice(widget.product.regularPrice)}ریال"
-                        : " ${kCheckPrice(widget.product.salePrice)}ریال",
+                  Divider(height: 1,),
+                  //PRODUCT IMAGE
+                  Text(
+                    widget.product.name != '' ? widget.product.name! : 'بدون نام',
                     style: TextStyle(
-                        color: Colors.black.withOpacity(.7),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w300),
-                    maxLines: 1,
+                      color: Colors.black.withOpacity(0.6),
+                    ),
+                    maxLines: 2,
                   ),
-                ),
-              ],
+                  //PRODUCT TITLE
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      (off == 0) ? SizedBox(height: 20,) : regularBox(),
+                      SizedBox(width: 5,),
+                      percentBox(off)
+                    ],
+                  ),
+                  //PRODUCT PRICE
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      (off == 0)
+                          ? " ${kCheckPrice(widget.product.regularPrice)}ریال"
+                          : " ${kCheckPrice(widget.product.salePrice)}ریال",
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(.7),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w300),
+                      maxLines: 1,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ));
+      ),
+    );
   }
 
   Widget displayMedia() {
