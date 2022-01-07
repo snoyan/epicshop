@@ -46,7 +46,7 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(2.0),
       child: Container(
         margin: EdgeInsets.only(left: 10),
         height: MediaQuery.of(context).size.height * 0.34,
