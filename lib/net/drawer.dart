@@ -1,10 +1,9 @@
+import 'package:epicshop/constants.dart';
 import 'package:epicshop/enums.dart';
 import 'package:epicshop/net/net_helper.dart';
 import 'package:epicshop/screens/home/components/category_box.dart';
-import 'package:epicshop/screens/home/home_screen.dart';
 import 'package:epicshop/screens/login/login_popup.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
 
 const kTextStyle = TextStyle(color: Colors.black, fontWeight: FontWeight.w300);
 
@@ -46,14 +45,20 @@ class _MyDrawerState extends State<MyDrawer> {
                 style: kTextStyle,
               ),
               selected: _selectedDestination == 1,
-              onTap: () {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return LoginPopUp(
-                        selectedScreen: Screen.drawer,
-                      );
-                    });
+              onTap: () async{
+                bool isLoggedIn = await NetworkHelper().wooCommerce.isCustomerLoggedIn();
+                if(isLoggedIn){
+                  kShowToast(context, 'شما قبلا وارد حساب خود شده اید.');
+                }else{
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return LoginPopUp(
+                          selectedScreen: Screen.drawer,
+                        );
+                      });
+                }
+
               },
             ),
             SubMenu(),

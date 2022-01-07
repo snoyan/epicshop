@@ -2,14 +2,13 @@ import 'package:epicshop/components/custom_surfix_icon.dart';
 import 'package:epicshop/components/default_button.dart';
 import 'package:epicshop/components/form_error.dart';
 import 'package:epicshop/net/net_helper.dart';
-import 'package:epicshop/net/payment.dart';
 import 'package:epicshop/screens/cart/cart_screen.dart';
 import 'package:epicshop/screens/home/home_screen.dart';
 import 'package:epicshop/screens/profile/components/edit_profile.dart';
 import 'package:epicshop/screens/sign_up/signup_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:epicshop/net/brain.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart' show ModalProgressHUD;
 import '../../constants.dart';
 import '../../enums.dart';
 
@@ -213,7 +212,7 @@ class _LoginPopUpState extends State<LoginPopUp> {
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
-        } else if (value.length >= 8) {
+        } else if (value.length >= 4) {
           removeError(error: kShortPassError);
         }
         return null;
@@ -223,7 +222,7 @@ class _LoginPopUpState extends State<LoginPopUp> {
         if (value!.isEmpty) {
           addError(error: kPassNullError);
           return "";
-        } else if (value.length < 8) {
+        } else if (value.length < 4) {
           addError(error: kShortPassError);
           return "";
         }
