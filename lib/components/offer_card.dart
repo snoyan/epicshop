@@ -51,7 +51,7 @@ class _OfferCardState extends State<OfferCard> {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(left: 8),
-        height: MediaQuery.of(context).size.height * 0.36,
+        height: MediaQuery.of(context).size.height * 0.35,
         width: 150,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(15)),
@@ -66,7 +66,7 @@ class _OfferCardState extends State<OfferCard> {
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               AspectRatio(
                 aspectRatio: 1.2,

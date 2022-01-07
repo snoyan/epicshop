@@ -45,8 +45,8 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(left: 8),
-        height: 252,
+        margin: EdgeInsets.only(left: 10),
+        height: MediaQuery.of(context).size.height * 0.34,
         width: 165,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(15)),
@@ -61,7 +61,7 @@ class _ProductCardState extends State<ProductCard> {
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               AspectRatio(
                 aspectRatio: 1.2,
@@ -79,7 +79,7 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              // const SizedBox(height: 1),
               //PRODUCT IMAGE
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -116,7 +116,7 @@ class _ProductCardState extends State<ProductCard> {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: Align(
-                  alignment: Alignment.topLeft,
+                  alignment: Alignment.bottomLeft,
                   child: Text(
                     (off == 0)
                         ? " ${kCheckPrice(widget.product.regularPrice)}ریال"

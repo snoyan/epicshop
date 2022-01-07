@@ -36,11 +36,11 @@ class _OfferSliderState extends State<OfferSlider> {
           ),
         ),
         Expanded(
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.4,
-            decoration: BoxDecoration(color: kPrimaryColor),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              decoration: BoxDecoration(color: kPrimaryColor),
               child: Row(
                 children: [
                   ...List.generate(Brain.publicProductList.length, (index) {

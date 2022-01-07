@@ -88,11 +88,10 @@ class _PopularProductsState extends State<PopularProducts> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Expanded(
-              child: Container(
-                padding: EdgeInsets.only(right: 8),
-                //color: Colors.grey,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Container(
+                  padding: EdgeInsets.only(right: 8),
                   child: Row(
                     children: [
                       ...List.generate(
