@@ -51,7 +51,7 @@ class _OfferCardState extends State<OfferCard> {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(left: 8),
-        height: MediaQuery.of(context).size.height * 0.385,
+        height: MediaQuery.of(context).size.height * 0.38,
         width: 150,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(15)),
@@ -79,53 +79,39 @@ class _OfferCardState extends State<OfferCard> {
                 ),
                 const SizedBox(height: 10),
                 //PRODUCT IMAGE
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    widget.product.name != '' ? widget.product.name! : 'بدون نام',
-                    style: TextStyle(
-                      color: Colors.black.withOpacity(0.6),
-                    ),
-                    maxLines: 2,
+                Text(
+                  widget.product.name != '' ? widget.product.name! : 'بدون نام',
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(0.6),
                   ),
+                  maxLines: 2,
+                ),
+                SizedBox(
+                  height: 4,
                 ),
                 //PRODUCT TITLE
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, bottom: 4),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      (off == 0)
-                          ? SizedBox(
-                              height: 20,
-                            )
-                          : regularBox(),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      percentBox(off)
-                    ],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    (off == 0) ? SizedBox(height: 20,) : regularBox(),
+                    SizedBox(width: 5,),
+                    percentBox(off)
+                  ],
                 ),
                 //PRODUCT PRICE
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      (off == 0)
-                          ? " ${kCheckPrice(widget.product.regularPrice)}ریال"
-                          : " ${kCheckPrice(widget.product.salePrice)}ریال",
-                      //"ریال ${widget.product.regularPrice}",
-                      style: TextStyle(
-                          color: Colors.black.withOpacity(.7),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w300),
-                      maxLines: 1,
-                    ),
+
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    (off == 0)
+                        ? " ${kCheckPrice(widget.product.regularPrice)}ریال"
+                        : " ${kCheckPrice(widget.product.salePrice)}ریال",
+                    //"ریال ${widget.product.regularPrice}",
+                    style: TextStyle(
+                        color: Colors.black.withOpacity(.7),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w300),
+                    maxLines: 1,
                   ),
                 ),
                 SizedBox(
