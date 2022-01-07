@@ -1,6 +1,4 @@
-import 'package:epicshop/net/brain.dart';
 import 'package:epicshop/net/data.dart';
-import 'package:epicshop/net/net_helper.dart';
 import 'package:epicshop/screens/cart/components/cart_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +26,7 @@ class _ProductDetailState extends State<ProductDetail> {
   late int index = 0;
   int quantity = 1;
 
-  // The _onBackPressed is for back to HomeScreen and refresh it by press Android backButton.
+  /// The _onBackPressed is for back to HomeScreen and refresh it by press Android backButton.
   Future<bool?> onBackPressed() async {
     Navigator.pop(context);
     // Navigator.pushNamedAndRemoveUntil(

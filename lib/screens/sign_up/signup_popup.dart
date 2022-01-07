@@ -142,7 +142,7 @@ class _SignupPopupState extends State<SignupPopup> {
                                 final result = await NetworkHelper()
                                     .wooCommerce
                                     .createCustomer(user);
-                                if (result != null) {
+                                if (result) {
                                   setState(() {
                                     showSpinner = false;
                                   });
@@ -233,7 +233,7 @@ class _SignupPopupState extends State<SignupPopup> {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
         }
-        if (value.length >= 8) {
+        if (value.length >= 4) {
           removeError(error: kShortPassError);
         }
         password = value;
@@ -242,7 +242,7 @@ class _SignupPopupState extends State<SignupPopup> {
         if (value!.isEmpty) {
           addError(error: kPassNullError);
           return "";
-        } else if (value.length < 8) {
+        } else if (value.length < 4) {
           addError(error: kShortPassError);
           return "";
         }
