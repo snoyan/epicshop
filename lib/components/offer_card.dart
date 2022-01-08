@@ -11,7 +11,7 @@ class OfferCard extends StatefulWidget {
   OfferCard({
     required this.product,
   });
-  WooProduct product;
+  final WooProduct product;
 
   @override
   _OfferCardState createState() => _OfferCardState();
@@ -42,7 +42,7 @@ class _OfferCardState extends State<OfferCard> {
 
   @override
   void initState() {
-    //super.initState();
+    super.initState();
     //EndTime();
     offPercent();
   }

@@ -63,8 +63,8 @@ class DrawerCategoryCard extends StatelessWidget {
     required this.press,
   });
 
-  String? text;
-  GestureTapCallback? press;
+  final String? text;
+  final GestureTapCallback? press;
 
   @override
   Widget build(BuildContext context) {

@@ -61,7 +61,7 @@ class NetworkHelper {
  late int id;
 
   /// the getCustomer is for get customer information.
-  getCustomer() async {
+  Future<bool> getCustomer() async {
     this.id = (await NetworkHelper().wooCommerce.fetchLoggedInUserId())!;
     Brain.customer = await NetworkHelper().wooCommerce.getCustomerById(id: id);
     if (Brain.customer.email != null && Brain.customer.email != "" &&

@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:woocommerce/models/cart_item.dart';
+import 'package:woocommerce/models/order_payload.dart';
 import 'package:zarinpal/zarinpal.dart';
 import '../../constants.dart';
 import '../../enums.dart';
@@ -61,7 +63,7 @@ class _CartScreenState extends State<CartScreen> {
 
   ///_launchInBrowser is for launch url in external Browser(chrome & etc.).
   Future<void> _launchInBrowser(String url) async {
-    if (!await launch(
+    if (await launch(
       url,
       forceSafariVC: false,
       forceWebView: false,
@@ -84,7 +86,32 @@ class _CartScreenState extends State<CartScreen> {
         buyButton = DefaultButton(
           color: Colors.green,
           text: 'تکمیل خرید',
-          press: () {
+          press: () async {
+            // kShowToast(context, "شروع.");
+            // List<LineItems> lineItems = [];
+            // List<WooCartItem> cartItem = context.watch<Data>().cartItem;
+            // for (int i = 0; i < cartItem.length; i++) {
+            //   LineItems lineItem = LineItems(
+            //       productId: cartItem[i].id,
+            //       name: cartItem[i].name,
+            //       quantity: cartItem[i].quantity);
+            //   lineItems.add(lineItem);
+            // }
+            // // WooOrderPayloadBilling billing = Brain.billing as WooOrderPayloadBilling;
+            // WooOrderPayloadBilling billing = WooOrderPayloadBilling(
+            //     firstName: Brain.billing.firstName,
+            //     lastName: Brain.billing.lastName,
+            //     email: Brain.billing.lastName,
+            //     phone: Brain.billing.phone,
+            //     state: Brain.billing.state,
+            //     city: Brain.billing.city,
+            //     address1: Brain.billing.address1);
+            // await NetworkHelper().wooCommerce.createOrder(WooOrderPayload(
+            //     status: 'completed',
+            //     customerId: Brain.customer.id,
+            //     billing: billing,
+            //     lineItems: lineItems));
+            // kShowToast(context, 'پایان.');
             _payment(totalPrice);
           },
         );
@@ -121,34 +148,32 @@ class _CartScreenState extends State<CartScreen> {
     return true;
   }
 
-  int changePrice(String price) {
-    int changedPrice = int.parse(price);
-    return changedPrice;
-  }
-
-  /// calculateTotalPrice is for calculate [totalPrice] and change it form String to Integer
-  void calculateTotalPrice() {
-    setState(() {
-      totalPrice = 0;
-    });
-    for (int i = 0; i < context.watch<Data>().cartItem.length; i++) {
-      for (int j = 0; j < Brain.publicProductList.length; j++) {
-        if (Brain.publicProductList[j].name ==
-                context.watch<Data>().cartItem[i].name ||
-            Brain.publicProductList[j].id ==
-                context.watch<Data>().cartItem[i].id) {
-          context.read<Data>().setPrice(i, Brain.publicProductList![j].price!);
-          var temp = changePrice(context.watch<Data>().cartItem[i].price!) *
-              context.watch<Data>().cartItem[i].quantity!;
-          totalPrice += temp;
-        }
-      }
-    }
-    setState(() {
-      totalPrice;
-    });
-  }
-
+  // /// calculateTotalPrice is for calculate [totalPrice] and change it form String to Integer
+  // void calculateTotalPrice() {
+  //   setState(() {
+  //     totalPrice = 0;
+  //   });
+  //   for (int i = 0; i < context.watch<Data>().cartItem.length; i++) {
+  //     for (int j = 0; j < Brain.publicProductList.length; j++) {
+  //       if (Brain.publicProductList[j].name ==
+  //               context.watch<Data>().cartItem[i].name ||
+  //           Brain.publicProductList[j].id ==
+  //               context.watch<Data>().cartItem[i].id) {
+  //         context.read<Data>().setPrice(i, Brain.publicProductList[j].price);
+  //         var temp = changePrice(context.watch<Data>().cartItem[i].price) *
+  //             context.watch<Data>().cartItem[i].quantity;
+  //         totalPrice += temp;
+  //       }
+  //     }
+  //   }
+  //   setState(() {
+  //     totalPrice;
+  //   });
+  // }
+  // int changePrice(String price) {
+  //   int changedPrice = int.parse(price);
+  //   return changedPrice;
+  // }
   @override
   void initState() {
     super.initState();
@@ -157,7 +182,10 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    calculateTotalPrice();
+    context.watch<Data>().calculateTotalPrice();
+    setState(() {
+      totalPrice = context.watch<Data>().totalPrice;
+    });
 
     /// WillPopScope helps developer to control Android BackButton
     return Consumer<Data>(builder: (context, data, child) {
@@ -209,9 +237,8 @@ class _CartScreenState extends State<CartScreen> {
                     direction: DismissDirection.endToStart,
                     onDismissed: (direction) {
                       setState(() {
-                        var temp = changePrice(data.cartItem[index].price!) *
-                            data.cartItem[index].quantity!;
-                        totalPrice -= temp;
+                        var temp = data.changePrice(data.cartItem[index].price!) * data.cartItem[index].quantity!;
+                        data.totalPrice -= temp;
                         data.removeCartItem(data.cartItem[index]);
                       });
                     },
@@ -229,7 +256,6 @@ class _CartScreenState extends State<CartScreen> {
               ),
             ),
             bottomNavigationBar: CheckoutCard(
-              totalPrice: totalPrice,
               getButton: buyButton,
             ),
           ),

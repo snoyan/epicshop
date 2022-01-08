@@ -80,9 +80,6 @@ class _HomeScreenState extends State<HomeScreen> {
         });
   }
 
-  get() async{
-    NetworkHelper().getCustomer();
-  }
   @override
   Widget build(BuildContext context) {
     /// The SystemChrome.setPreferredOrientations is for Lock up Rotation Screen .
@@ -91,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
       DeviceOrientation.portraitDown,
     ]);
     //takes all orders list when home page is building
-    get();
+
     getOrders();
 
     //<---
@@ -114,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            //top header banner in very start
+            ///top header banner in very start
             bannerSlider(banner1()),
             CategoryBox(),
             //Brain.fiteredProducts.length > 0 ? OfferSlider() : Container(),
@@ -160,6 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 getOrders() async {
+  NetworkHelper().getCustomer();
   bool isLoggedIn = await NetworkHelper().wooCommerce.isCustomerLoggedIn();
   if (isLoggedIn) {
     BillingScreen.allOrders = await NetworkHelper().wooCommerce.getOrders();

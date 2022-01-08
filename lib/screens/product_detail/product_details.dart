@@ -115,7 +115,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                   }
                                 }
                                 if (isExist) {
-                                  data.cartItem[index].quantity += quantity;
+                                  data.cartItem[index].quantity = data.cartItem[index].quantity!  + quantity;
                                 } else {
                                   try {
                                     cartImages.add(WooCartItemImages(

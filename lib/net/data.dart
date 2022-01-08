@@ -5,6 +5,8 @@ import 'package:woocommerce/models/customer.dart';
 import 'package:woocommerce/models/products.dart';
 import 'package:woocommerce/woocommerce.dart';
 
+import 'brain.dart';
+
 class Data extends ChangeNotifier {
   SharedPreferences? _pref;
   List<WooCartItem> _pCartItem = [];
@@ -20,6 +22,7 @@ class Data extends ChangeNotifier {
   WooCart? _pMyCart;
   bool _pIsLoggedIn = false;
   bool _pIsCustomerInfoFull = false;
+  int totalPrice = 0;
 
   SharedPreferences get pref => _pref!;
 
@@ -28,7 +31,28 @@ class Data extends ChangeNotifier {
     _pref!.setStringList('stringList', ['orage', 'apple', 'banana']);
     notifyListeners();
   }
+  /// calculateTotalPrice is for calculate [totalPrice] and change it form String to Integer
+  calculateTotalPrice() {
+      totalPrice = 0;
+    for (int i = 0; i < _pCartItem.length; i++) {
+      for (int j = 0; j < Brain.publicProductList.length; j++) {
+        if (Brain.publicProductList[j].name ==
+            _pCartItem[i].name ||
+            Brain.publicProductList[j].id ==
+                _pCartItem[i].id) {
+          setPrice(i, Brain.publicProductList[j].price);
+          int temp = changePrice(_pCartItem[i].price!) * _pCartItem[i].quantity!;
+          totalPrice += temp;
+        }
+      }
+      notifyListeners();
+    }
 
+  }
+  int changePrice(String price) {
+    int changedPrice = int.parse(price);
+    return changedPrice;
+  }
   ///. AllProductList ///////////////////////////////////////////////////
   List<WooProduct> get pAllProductList => _pAllProductList;
   void setAllProductList(List<WooProduct> value) {
@@ -69,13 +93,24 @@ class Data extends ChangeNotifier {
     _pCartItem.add(value);
     notifyListeners();
   }
+  void setCartQuantity(int? id,bool temp){
+    for(WooCartItem cart in _pCartItem){
+      if(cart.id == id){
+        if(temp){
+          cart.quantity = cart.quantity! + 1;
+        } else{
+          cart.quantity = cart.quantity! - 1;
+        }
+      }
+      notifyListeners();
+    }}
 
   void setCartItems(List<WooCartItem> value) {
     _pCartItem = value;
     notifyListeners();
   }
 
-  void setPrice(int index, String newPrice) {
+  void setPrice(int index, String? newPrice) {
     cartItem[index].price = newPrice;
     notifyListeners();
   }

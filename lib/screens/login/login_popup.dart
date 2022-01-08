@@ -66,21 +66,7 @@ class _LoginPopUpState extends State<LoginPopUp> {
             builder: (context) => Brain(selectedRouteName: routeName)));
     kShowToast(context, "با موفقیت وارد حساب کاربری شدید");
   }
-  // /// infoChecker helps to check user information is complete or not.
-  // /// for transport to payment screen ,first user has to complete his/her information.
-  // void infoChecker(String routeName) {
-  //   if (Brain.customer.email != null && Brain.customer.email != "" && Brain.customer.firstName != null && Brain.customer.firstName != "" &&
-  //       Brain.customer.lastName != null && Brain.customer.lastName != "" && Brain.customer.billing.phone != null && Brain.customer.billing.phone != "" &&
-  //       Brain.customer.billing.city != null && Brain.customer.billing.city != "" && Brain.customer.billing.state != null && Brain.customer.billing.state != "" &&
-  //       Brain.customer.billing.address1 != null && Brain.customer.billing.address1 != "") {
-  //     Navigator.of(context).pop();
-  //     }else{
-  //       Navigator.of(context).pop();
-  //       navigateToScreen(EditProfileScreen.routeName);
-  //       kShowToast(context, "برای تکمیل خرید ابتدا باید اطلاعات پروفایل خود را کامل کنید.");
-  //     }
-  //
-  // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -215,10 +201,9 @@ class _LoginPopUpState extends State<LoginPopUp> {
         } else if (value.length >= 4) {
           removeError(error: kShortPassError);
         }
-        return null;
+        password = value;
       },
       validator: (value) {
-        password = value!;
         if (value!.isEmpty) {
           addError(error: kPassNullError);
           return "";
@@ -247,10 +232,9 @@ class _LoginPopUpState extends State<LoginPopUp> {
         } else if (value.length >= 3) {
           removeError(error: kShortUserNameError);
         }
-        return null;
+        userName = value;
       },
       validator: (value) {
-        userName = value!;
         if (value!.isEmpty) {
           addError(error: kUsernameNullError);
           return "";

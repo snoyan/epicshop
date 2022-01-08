@@ -42,6 +42,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           isTrying = false;
         });
         // context.read<Data>().setCartItems(await NetworkHelper().wooCommerce.getMyCartItems());
+
         Brain.allProductList = await NetworkHelper().wooCommerce.getProducts();
         for (int i = 0; i < Brain.allProductList.length; i++) {
           category = Brain.allProductList[i].categories;
