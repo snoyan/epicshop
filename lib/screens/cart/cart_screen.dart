@@ -10,7 +10,6 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:woocommerce/models/cart_item.dart';
-import 'package:woocommerce/models/order_payload.dart';
 import 'package:zarinpal/zarinpal.dart';
 import '../../constants.dart';
 import '../../enums.dart';
@@ -237,7 +236,9 @@ class _CartScreenState extends State<CartScreen> {
                     direction: DismissDirection.endToStart,
                     onDismissed: (direction) {
                       setState(() {
-                        var temp = data.changePrice(data.cartItem[index].price!) * data.cartItem[index].quantity!;
+                        var temp =
+                            data.changePrice(data.cartItem[index].price!) *
+                                data.cartItem[index].quantity!;
                         data.totalPrice -= temp;
                         data.removeCartItem(data.cartItem[index]);
                       });
