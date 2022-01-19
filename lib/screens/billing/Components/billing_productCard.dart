@@ -1,8 +1,5 @@
-import 'package:epicshop/net/net_helper.dart';
 import 'package:epicshop/screens/product_detail/product_details.dart';
 import 'package:flutter/material.dart';
-import 'package:html/parser.dart';
-import 'package:woocommerce/models/products.dart';
 import 'package:woocommerce/woocommerce.dart';
 import '../../../constants.dart';
 import 'package:intl/intl.dart';

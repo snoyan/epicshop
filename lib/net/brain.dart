@@ -1,14 +1,15 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:woocommerce/models/customer.dart';
 import 'package:woocommerce/woocommerce.dart'
     show WooCart, WooCartItem, WooProduct, WooProductCategory;
-  
+
 import '../constants.dart';
 import 'net_helper.dart';
 import 'dart:io';
-import 'offer_product_filter.dart';
 
 const spinkit = SpinKitDancingSquare(
   color: Colors.white,
@@ -58,14 +59,14 @@ class _BrainState extends State<Brain> {
         // await getProductDates();
         // HPCategoryProduct();
         SharedPreferences pref = await SharedPreferences.getInstance();
-        Brain.isLoggedIn = await NetworkHelper().wooCommerce.isCustomerLoggedIn();
+        Brain.isLoggedIn =
+            await NetworkHelper().wooCommerce.isCustomerLoggedIn();
 
         /// if isLoggedIn [true] get customer cartItem
         if (Brain.isLoggedIn) {
           if (Brain.customer.username == null) {
-
             // await NetworkHelper().getCart();
-            if (await NetworkHelper().getCustomer() == false){
+            if (await NetworkHelper().getCustomer() == false) {
               kShowToast(context,
                   "برای تکمیل خرید ابتدا باید اطلاعات پروفایل خود را کامل کنید.");
             }
@@ -143,7 +144,9 @@ class TryAgain extends StatelessWidget {
 }
 
 HPCategoryProduct() {
-  List<WooProduct> bannerProduct = Brain.allProductList.where((element) => element.name == "Appcategory").toList();
+  List<WooProduct> bannerProduct = Brain.allProductList
+      .where((element) => element.name == "Appcategory")
+      .toList();
   if (bannerProduct.isEmpty)
     Brain.HPCategoryProduct;
   else {

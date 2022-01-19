@@ -239,7 +239,7 @@ class _CartScreenState extends State<CartScreen> {
                       setState(() {
                         var temp =
                             data.changePrice(data.cartItem[index].price!) *
-                                data.cartItem[index].quantity!;
+                                data.cartItem[index].quantity;
                         data.totalPrice -= temp;
                         data.removeCartItem(data.cartItem[index]);
                       });

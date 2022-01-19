@@ -1,28 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
-const Color kBaseColor0 = Color(0xFFF5F6F9); ///white
-const Color kBaseColor1 = Color(0xFFFFE6E6); ///white
-const Color kBaseColor2 = Color(0xfff7b4dd); ///Veri Peri
-const Color kBaseColor3 = Color(0xff97999b); ///Ultimate Gray
-const Color kBaseColor4 = Color(0xff104581); ///Classic Blueconst
-const Color kBaseColor5 = Color(0xFFAA95FA); ///
+const Color kBaseColor0 = Color(0xFFF5F6F9);
+
+///white
+const Color kBaseColor1 = Color(0xFFFFE6E6);
+
+///white
+const Color kBaseColor2 = Color(0xfff7b4dd);
+
+///Veri Peri
+const Color kBaseColor3 = Color(0xff97999b);
+
+///Ultimate Gray
+const Color kBaseColor4 = Color(0xff104581);
+
+///Classic Blueconst
+const Color kBaseColor5 = Color(0xFFAA95FA);
+
+///
 
 /// kCheckPrice has two jobs :
 ///  1. convert currency to toman .
 ///  2. check null prices .
 String kCheckPrice(String? price) {
-  if(price == ''){
+  if (price == '') {
     return '0';
-  }else{var formatter = NumberFormat('###,###,###,###');
-  var a = int.parse(price!);
-  var c = formatter.format(a);
-  print(c);
-  return c;
+  } else {
+    var formatter = NumberFormat('###,###,###,###');
+    var a = int.parse(price!);
+    var c = formatter.format(a);
+    print(c);
+    return c;
   }
-
 }
 
 const kPrimaryColor = Color(0xFFFF7643);
@@ -72,8 +83,8 @@ void kShowToast(BuildContext context, String text) {
 
 class NetButton extends StatelessWidget {
   NetButton({this.text, this.press});
-  String? text;
-  VoidCallback? press;
+  final String? text;
+  final VoidCallback? press;
   @override
   Widget build(BuildContext context) {
     return Padding(

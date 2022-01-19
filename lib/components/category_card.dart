@@ -1,6 +1,5 @@
 import 'package:epicshop/net/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({

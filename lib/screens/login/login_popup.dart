@@ -1,3 +1,5 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:epicshop/components/custom_surfix_icon.dart';
 import 'package:epicshop/components/default_button.dart';
 import 'package:epicshop/components/form_error.dart';
@@ -8,7 +10,8 @@ import 'package:epicshop/screens/profile/components/edit_profile.dart';
 import 'package:epicshop/screens/sign_up/signup_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:epicshop/net/brain.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart' show ModalProgressHUD;
+import 'package:modal_progress_hud/modal_progress_hud.dart'
+    show ModalProgressHUD;
 import '../../constants.dart';
 import '../../enums.dart';
 
@@ -66,7 +69,6 @@ class _LoginPopUpState extends State<LoginPopUp> {
             builder: (context) => Brain(selectedRouteName: routeName)));
     kShowToast(context, "با موفقیت وارد حساب کاربری شدید");
   }
-
 
   @override
   Widget build(BuildContext context) {

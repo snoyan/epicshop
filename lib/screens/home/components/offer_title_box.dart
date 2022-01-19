@@ -1,4 +1,3 @@
-import 'package:epicshop/net/offer_product_filter.dart';
 import 'package:flutter/material.dart';
 
 class OfferTitleBtn extends StatelessWidget {

@@ -1,7 +1,4 @@
-import 'package:epicshop/data.dart';
-import 'package:epicshop/net/offer_product_filter.dart';
 import 'package:epicshop/screens/product_detail/product_details.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:woocommerce/models/products.dart';
 import '../constants.dart';
@@ -46,6 +43,7 @@ class _OfferCardState extends State<OfferCard> {
     //EndTime();
     offPercent();
   }
+
 //
   @override
   Widget build(BuildContext context) {
@@ -93,8 +91,14 @@ class _OfferCardState extends State<OfferCard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    (off == 0) ? SizedBox(height: 20,) : regularBox(),
-                    SizedBox(width: 5,),
+                    (off == 0)
+                        ? SizedBox(
+                            height: 20,
+                          )
+                        : regularBox(),
+                    SizedBox(
+                      width: 5,
+                    ),
                     percentBox(off)
                   ],
                 ),

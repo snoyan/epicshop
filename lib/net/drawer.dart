@@ -9,7 +9,7 @@ const kTextStyle = TextStyle(color: Colors.black, fontWeight: FontWeight.w300);
 
 class MyDrawer extends StatefulWidget {
   MyDrawer({Key? key, this.child}) : super(key: key);
-  Widget? child;
+  final Widget? child;
   @override
   _MyDrawerState createState() => _MyDrawerState();
 }
@@ -45,11 +45,12 @@ class _MyDrawerState extends State<MyDrawer> {
                 style: kTextStyle,
               ),
               selected: _selectedDestination == 1,
-              onTap: () async{
-                bool isLoggedIn = await NetworkHelper().wooCommerce.isCustomerLoggedIn();
-                if(isLoggedIn){
+              onTap: () async {
+                bool isLoggedIn =
+                    await NetworkHelper().wooCommerce.isCustomerLoggedIn();
+                if (isLoggedIn) {
                   kShowToast(context, 'شما قبلا وارد حساب خود شده اید.');
-                }else{
+                } else {
                   showDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -58,7 +59,6 @@ class _MyDrawerState extends State<MyDrawer> {
                         );
                       });
                 }
-
               },
             ),
             SubMenu(),
@@ -120,8 +120,8 @@ class SubMenu extends StatelessWidget {
 
 class RoundedMenuItem extends StatelessWidget {
   RoundedMenuItem({this.text, this.press});
-  String? text;
-  VoidCallback? press;
+  final String? text;
+  final VoidCallback? press;
   @override
   Widget build(BuildContext context) {
     return Padding(

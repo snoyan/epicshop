@@ -3,9 +3,7 @@ import 'package:epicshop/components/section.dart';
 import 'package:epicshop/net/brain.dart';
 import 'package:epicshop/screens/product_detail/product_page.dart';
 import 'package:flutter/material.dart';
-import 'package:woocommerce/models/product_category.dart';
 import '../../../constants.dart';
-import '../../../data.dart';
 
 class CategoryBox extends StatefulWidget {
   @override
@@ -46,7 +44,7 @@ class _CategoryBoxState extends State<CategoryBox> {
 
 class DrawerCategory extends StatefulWidget {
   DrawerCategory({this.productCategoryName});
-  String? productCategoryName;
+  final String? productCategoryName;
   @override
   State<DrawerCategory> createState() => _DrawerCategoryState();
 }

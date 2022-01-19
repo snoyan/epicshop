@@ -3,7 +3,6 @@ import 'package:epicshop/net/data.dart';
 import 'package:epicshop/screens/product_detail/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider/src/provider.dart';
 import 'package:woocommerce/woocommerce.dart';
 import '../../../../constants.dart';
 
@@ -22,7 +21,7 @@ class _CartCardState extends State<CartCard> {
   bool temp = false;
   late WooProduct product;
   int off = 0;
-  late int quantity1 = widget.cartItem.quantity!;
+  late int quantity1 = widget.cartItem.quantity;
   void setPrice() {
     /// this loop take product price property and give it to cartItem with same name.
     for (int i = 0; i < context.watch<Data>().cartItem.length; i++) {
@@ -58,7 +57,7 @@ class _CartCardState extends State<CartCard> {
   }
 
   change(bool temp) {
-    if (widget.cartItem.quantity! > 1) {
+    if (widget.cartItem.quantity > 1) {
       if (temp) {
         context.read<Data>().setCartQuantity(widget.cartItem.id, true);
         context.read<Data>().calculateTotalPrice();
@@ -79,7 +78,7 @@ class _CartCardState extends State<CartCard> {
   Widget build(BuildContext context) {
     change(temp);
     setPrice();
-    total = int.parse(widget.cartItem.price!) * widget.cartItem.quantity!;
+    total = int.parse(widget.cartItem.price!) * widget.cartItem.quantity;
 
     //todo : cartCard
     return Consumer<Data>(

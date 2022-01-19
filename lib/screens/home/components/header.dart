@@ -1,12 +1,7 @@
-import 'package:badges/badges.dart';
-import 'package:epicshop/net/brain.dart';
 import 'package:epicshop/net/data.dart';
-import 'package:epicshop/screens/cart/cart_screen.dart';
 import 'package:epicshop/screens/cart/components/cart_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import '../../../constants.dart';
 import '../search_resultPage.dart';
 
 class Header extends StatefulWidget {

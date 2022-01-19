@@ -1,8 +1,6 @@
 import 'package:epicshop/net/data.dart';
 import 'package:epicshop/screens/cart/components/cart_icon.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:woocommerce/models/cart_item.dart';
 import 'package:woocommerce/woocommerce.dart';
@@ -115,7 +113,8 @@ class _ProductDetailState extends State<ProductDetail> {
                                   }
                                 }
                                 if (isExist) {
-                                  data.cartItem[index].quantity = data.cartItem[index].quantity!  + quantity;
+                                  data.cartItem[index].quantity =
+                                      data.cartItem[index].quantity + quantity;
                                 } else {
                                   try {
                                     cartImages.add(WooCartItemImages(

@@ -1,7 +1,4 @@
-import 'package:epicshop/data.dart';
 import 'package:epicshop/net/brain.dart';
-import 'package:epicshop/net/welcome_screen.dart';
-import 'package:epicshop/screens/home/home_screen.dart';
 import 'package:epicshop/screens/home/search_resultPage.dart';
 import 'package:flutter/material.dart';
 import 'package:woocommerce/models/products.dart';

@@ -1,19 +1,13 @@
-import 'package:epicshop/components/offer_card.dart';
-import 'package:epicshop/components/category_productCard.dart';
 import 'package:epicshop/components/product_card.dart';
 import 'package:epicshop/net/brain.dart';
-import 'package:epicshop/net/net_helper.dart';
-import 'package:epicshop/net/pro_card.dart';
-import 'package:epicshop/screens/home/components/offer_slider.dart';
 import 'package:epicshop/screens/product_detail/product_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:woocommerce/models/products.dart';
 
 import '../../../constants.dart';
 
 class PopularProducts extends StatefulWidget {
-  String catName;
+  final String catName;
   PopularProducts({required this.catName});
 
   @override

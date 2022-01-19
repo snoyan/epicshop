@@ -3,7 +3,6 @@ import 'package:epicshop/screens/cart/cart_screen.dart';
 import 'package:epicshop/screens/home/search_resultPage.dart';
 import 'package:epicshop/screens/product_detail/product_details.dart';
 import 'package:flutter/cupertino.dart';
-import 'net/brain.dart';
 import 'net/welcome_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/profile/components/edit_profile.dart';

@@ -1,7 +1,8 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:epicshop/net/net_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-import 'package:woocommerce/models/product_attributes.dart';
 import 'package:woocommerce/models/products.dart';
 import '../../../constants.dart';
 
@@ -21,11 +22,6 @@ class ProductDescription extends StatefulWidget {
 }
 
 class _ProductDescriptionState extends State<ProductDescription> {
-  @override
-  void initState() {
-    // TODO: implement initState
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -54,7 +50,7 @@ class _ProductDescriptionState extends State<ProductDescription> {
           child: Divider(),
         ),
 
-        //TODO : lateer add it with functionallity
+        //  lateer add it with functionallity
 
         //product Count
 

@@ -1,5 +1,4 @@
 import 'package:epicshop/screens/product_detail/product_details.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:woocommerce/models/products.dart';
 import '../constants.dart';
@@ -8,7 +7,7 @@ class ProCard extends StatefulWidget {
   ProCard({
     required this.product,
   });
-  WooProduct product;
+  final WooProduct product;
 
   @override
   _ProCardState createState() => _ProCardState();

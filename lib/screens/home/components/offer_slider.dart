@@ -1,8 +1,6 @@
 import 'package:epicshop/components/offer_card.dart';
 import 'package:epicshop/net/brain.dart';
-import 'package:epicshop/net/offer_product_filter.dart';
 import 'package:flutter/material.dart';
-import 'package:woocommerce/models/products.dart';
 import '../../../constants.dart';
 import 'offer_title_box.dart';
 

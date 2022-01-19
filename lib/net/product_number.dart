@@ -1,11 +1,7 @@
 import 'package:epicshop/components/default_button.dart';
-import 'package:epicshop/net/welcome_screen.dart';
 import 'package:epicshop/screens/cart/cart_screen.dart';
-import 'package:epicshop/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:woocommerce/models/cart.dart';
 import 'package:woocommerce/models/cart_item.dart';
-import 'package:woocommerce/models/products.dart';
 import 'package:woocommerce/woocommerce.dart';
 
 import 'brain.dart';
@@ -14,7 +10,7 @@ class ProductNum extends StatefulWidget {
   ProductNum({Key? key, required this.product, required this.temp});
 
   final WooProduct product;
-  bool temp;
+  final bool temp;
   @override
   _ProductNumState createState() => _ProductNumState();
 }

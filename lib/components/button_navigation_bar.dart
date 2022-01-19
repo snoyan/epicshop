@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../enums.dart';
-
 class BottomNavigator extends StatefulWidget {
   @override
   BottomNavigatorState createState() => BottomNavigatorState();
@@ -13,7 +11,6 @@ class BottomNavigatorState extends State<BottomNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    final Color inActiveIconColor = Color(0xFFB6B6B6);
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
       bottomNavigationBar: Container(
@@ -82,9 +79,7 @@ class BottomNavigatorState extends State<BottomNavigator> {
                             duration: const Duration(seconds: 1),
                             curve: Curves.fastLinearToSlowEaseIn,
                             child: Text(
-                              index == currentIndex
-                                  ? listOfTitles[index]
-                                  : '',
+                              index == currentIndex ? listOfTitles[index] : '',
                               style: const TextStyle(
                                 color: Colors.deepOrange,
                                 fontWeight: FontWeight.w600,

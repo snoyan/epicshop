@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class bannerSlider extends StatelessWidget {
-  List<String> imgPath;
+  final List<String> imgPath;
   bannerSlider(this.imgPath);
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,6 @@ class bannerSlider extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
-                            
                               image: NetworkImage(i), fit: BoxFit.fill),
                         )));
               },

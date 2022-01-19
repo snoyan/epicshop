@@ -1,13 +1,13 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:epicshop/components/custom_surfix_icon.dart';
 import 'package:epicshop/components/default_button.dart';
 import 'package:epicshop/net/brain.dart';
 import 'package:epicshop/net/net_helper.dart';
-import 'package:epicshop/screens/home/home_screen.dart';
 import 'package:epicshop/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:woocommerce/models/customer.dart';
-import 'package:woocommerce/woocommerce.dart';
 import '../../../constants.dart';
 import 'profile_pic.dart';
 

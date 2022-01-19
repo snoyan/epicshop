@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, unused_element
+
 import 'package:epicshop/components/default_button.dart';
 import 'package:epicshop/screens/login/login_popup.dart';
 import 'package:flutter/material.dart';

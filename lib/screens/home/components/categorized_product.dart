@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../data.dart';
 class CategorizedProduct extends StatelessWidget {
-final String categoryTitle;
-CategorizedProduct({
- required this.categoryTitle
-});
+  final String categoryTitle;
+  CategorizedProduct({required this.categoryTitle});
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only( left: 14.0, right: 14.0),
+          padding: const EdgeInsets.only(left: 14.0, right: 14.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -23,7 +20,7 @@ CategorizedProduct({
                 ),
               ),
               GestureDetector(
-                onTap: (){},
+                onTap: () {},
                 child: Text(
                   "بیشتر",
                   style: TextStyle(color: Color(0xFFBBBBBB)),

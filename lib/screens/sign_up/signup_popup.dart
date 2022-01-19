@@ -1,9 +1,10 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:epicshop/components/custom_surfix_icon.dart';
 import 'package:epicshop/components/default_button.dart';
 import 'package:epicshop/components/form_error.dart';
 import 'package:epicshop/net/brain.dart';
 import 'package:epicshop/net/net_helper.dart';
-import 'package:epicshop/net/payment.dart';
 import 'package:epicshop/screens/cart/cart_screen.dart';
 import 'package:epicshop/screens/home/home_screen.dart';
 import 'package:epicshop/screens/profile/components/edit_profile.dart';
